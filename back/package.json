@@ -5,10 +5,13 @@
   "keywords": [],
   "author": "",
   "scripts": {
-    "longpolling": "nodemon longpolling.ts"
+    "longpolling": "nodemon longpolling.ts",
+    "eventsource": "nodemon eventsource.ts"
   },
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.14",
+    "cors": "^2.8.5",
     "express": "^4.18.2"
   },
   "devDependencies": {

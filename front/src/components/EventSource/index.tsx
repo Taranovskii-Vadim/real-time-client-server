@@ -5,22 +5,16 @@ const baseURL = 'http://localhost:3001/api';
 
 const axiosInstance = axios.create({ baseURL, headers: { 'Content-Type': 'application/json' } });
 
-const LongPolling = () => {
+const EventSourcing = () => {
   const ref = useRef<HTMLInputElement>(null);
   const [data, setData] = useState<string[]>([]);
 
   const subscribe = async () => {
-    try {
-      const response = await axiosInstance.get<string>('/messages');
+    const eventSource = new EventSource(`${baseURL}/connect`);
 
-      setData((prev) => [response.data, ...prev]);
-
-      await subscribe();
-    } catch (e) {
-      setTimeout(() => {
-        subscribe();
-      }, 500);
-    }
+    eventSource.onmessage = function (event) {
+      setData((prev) => [event.data, ...prev]);
+    };
   };
 
   useEffect(() => {
@@ -46,4 +40,4 @@ const LongPolling = () => {
   );
 };
 
-export default LongPolling;
+export default EventSourcing;

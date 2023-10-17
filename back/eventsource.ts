@@ -12,9 +12,15 @@ const emitter = new events.EventEmitter();
 server.use(json());
 server.use(cors());
 
-server.get(ENDPOINT, (req, res) => {
-  emitter.once(EMITTER_NAME, (message: string) => {
-    res.json({ message });
+server.get("/api/connect", (req, res) => {
+  res.writeHead(200, {
+    Connection: "keep-alive",
+    "Content-Type": "text/event-stream",
+    "Cache-Control": "no-cache",
+  });
+
+  emitter.on(EMITTER_NAME, (message: string) => {
+    res.write(`data: ${message} \n\n`);
   });
 });
 
