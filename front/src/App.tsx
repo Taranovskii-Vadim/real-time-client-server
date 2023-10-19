@@ -1,12 +1,10 @@
-import LongPolling from './components/LongPolling';
-import EventSourcing from './components/EventSource';
+import WebSockets from './components/WebSockets';
 
 // TODO add styles
 
 const App = () => (
   <div>
-    {/* <LongPolling /> */}
-    <EventSourcing />
+    <WebSockets />
   </div>
 );
 
