@@ -1,11 +1,15 @@
-import WebSockets from './components/WebSockets';
+import Container from './ui/Container';
 
-// TODO add styles
+import WebSockets from './pages/WebSockets';
+// import LongPolling from './pages/LongPolling';
+// import EventSource from './pages/EventSource';
 
 const App = () => (
-  <div>
+  <Container>
+    {/* <LongPolling /> */}
+    {/* <EventSource /> */}
     <WebSockets />
-  </div>
+  </Container>
 );
 
 export default App;

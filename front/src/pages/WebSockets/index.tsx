@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef, FormEventHandler } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+import Form from '../../components/Form';
 
 const WebSockets = () => {
   const socket = useRef<WebSocket>();
-  const ref = useRef<HTMLInputElement>(null);
   const [data, setData] = useState<string[]>([]);
 
   useEffect(() => {
@@ -21,22 +22,17 @@ const WebSockets = () => {
     };
   }, []);
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault();
-
-    if (ref.current && socket.current) {
-      socket.current.send(ref.current.value);
+  const handleSubmit = (value: string) => {
+    if (socket.current) {
+      socket.current.send(value);
     }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input ref={ref} type="text" />
-        <button type="submit">Отправить</button>
-      </form>
+    <>
+      <Form onSubmit={handleSubmit} />
       <ul>{JSON.stringify(data)}</ul>
-    </div>
+    </>
   );
 };
 

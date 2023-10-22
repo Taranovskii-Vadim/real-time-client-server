@@ -1,12 +1,13 @@
 import axios from 'axios';
-import { useState, useEffect, useRef, FormEventHandler } from 'react';
+import { useState, useEffect } from 'react';
+
+import Form from '../../components/Form';
 
 const baseURL = 'http://localhost:3001/api';
 
 const axiosInstance = axios.create({ baseURL, headers: { 'Content-Type': 'application/json' } });
 
 const LongPolling = () => {
-  const ref = useRef<HTMLInputElement>(null);
   const [data, setData] = useState<string[]>([]);
 
   const subscribe = async () => {
@@ -27,20 +28,13 @@ const LongPolling = () => {
     subscribe();
   }, []);
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault();
-
-    if (ref.current) {
-      await axiosInstance.post('/messages', { message: ref.current.value });
-    }
+  const handleSubmit = async (message: string) => {
+    await axiosInstance.post('/messages', { message });
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input ref={ref} type="text" />
-        <button type="submit">Отправить</button>
-      </form>
+      <Form onSubmit={handleSubmit} />
       <ul>{JSON.stringify(data)}</ul>
     </div>
   );
