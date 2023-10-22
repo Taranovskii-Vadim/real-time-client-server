@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
 
 import Form from '../../components/Form';
-import List from '../../components/List';
+import ListItem from '../../ui/ListItem';
 
 const baseURL = 'http://localhost:3001/api';
 
@@ -30,7 +30,11 @@ const EventSourcing = () => {
   return (
     <div>
       <Form onSubmit={useCallback(handleSubmit, [])} />
-      <List data={data} />
+      <ul>
+        {data.map((item) => (
+          <ListItem key={item}>{item}</ListItem>
+        ))}
+      </ul>
     </div>
   );
 };

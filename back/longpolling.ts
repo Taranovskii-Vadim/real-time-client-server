@@ -14,7 +14,7 @@ server.use(cors());
 
 server.get(ENDPOINT, (req, res) => {
   emitter.once(EMITTER_NAME, (message: string) => {
-    res.json({ message });
+    res.json(message);
   });
 });
 

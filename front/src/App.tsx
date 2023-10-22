@@ -1,14 +1,14 @@
 import Container from './ui/Container';
 
 import WebSockets from './pages/WebSockets';
-// import LongPolling from './pages/LongPolling';
-// import EventSource from './pages/EventSource';
+import LongPolling from './pages/LongPolling';
+import EventSource from './pages/EventSource';
 
 const App = () => (
   <Container>
-    {/* <LongPolling /> */}
+    <LongPolling />
     {/* <EventSource /> */}
-    <WebSockets />
+    {/* <WebSockets /> */}
   </Container>
 );
 
