@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 import Form from '../../components/Form';
+import List from '../../components/List';
 
 const WebSockets = () => {
   const socket = useRef<WebSocket>();
@@ -31,7 +32,7 @@ const WebSockets = () => {
   return (
     <>
       <Form onSubmit={useCallback(handleSubmit, [socket])} />
-      <ul>{JSON.stringify(data)}</ul>
+      <List data={data} />
     </>
   );
 };

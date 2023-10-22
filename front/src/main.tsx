@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  li{
+    list-style: none;
+  }
 `;
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

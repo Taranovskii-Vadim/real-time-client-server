@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect, useCallback } from 'react';
 
 import Form from '../../components/Form';
+import List from '../../components/List';
 
 const baseURL = 'http://localhost:3001/api';
 
@@ -29,7 +30,7 @@ const EventSourcing = () => {
   return (
     <div>
       <Form onSubmit={useCallback(handleSubmit, [])} />
-      <ul>{JSON.stringify(data)}</ul>
+      <List data={data} />
     </div>
   );
 };
