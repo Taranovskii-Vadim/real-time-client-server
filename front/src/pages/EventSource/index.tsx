@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import Form from '../../components/Form';
 
@@ -28,7 +28,7 @@ const EventSourcing = () => {
 
   return (
     <div>
-      <Form onSubmit={handleSubmit} />
+      <Form onSubmit={useCallback(handleSubmit, [])} />
       <ul>{JSON.stringify(data)}</ul>
     </div>
   );

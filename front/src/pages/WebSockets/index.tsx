@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 import Form from '../../components/Form';
 
@@ -30,7 +30,7 @@ const WebSockets = () => {
 
   return (
     <>
-      <Form onSubmit={handleSubmit} />
+      <Form onSubmit={useCallback(handleSubmit, [socket])} />
       <ul>{JSON.stringify(data)}</ul>
     </>
   );

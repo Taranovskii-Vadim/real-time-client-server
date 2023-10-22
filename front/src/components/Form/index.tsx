@@ -1,4 +1,4 @@
-import { useRef, FormEventHandler } from 'react';
+import { useRef, FormEventHandler, memo } from 'react';
 
 import Input from '../../ui/Input';
 import Button from '../../ui/Button';
@@ -26,4 +26,4 @@ const Form = ({ onSubmit }: Props) => {
   );
 };
 
-export default Form;
+export default memo(Form);
